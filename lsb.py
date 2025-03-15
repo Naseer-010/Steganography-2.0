@@ -17,6 +17,7 @@ Options:
 import cv2
 import docopt
 import numpy as np
+from convertor import grayscale_to_rgb_chars
 
 
 class SteganographyException(Exception):
@@ -25,6 +26,8 @@ class SteganographyException(Exception):
 
 class LSBSteg():
     def __init__(self, im):
+        if len(im.shape) == 1:
+            im = grayscale_to_rgb_chars(im)
         self.image = im
         self.height, self.width, self.nbchannels = im.shape
         self.size = self.width * self.height
