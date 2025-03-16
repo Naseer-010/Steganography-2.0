@@ -26,11 +26,7 @@ class SteganographyException(Exception):
 
 class LSBSteg():
     def __init__(self, im):
-        if len(im.shape) == 1:
-            im = grayscale_to_rgb_chars(im)
-            self.image = im
-        else:
-            self.image = im
+        self.image = im
         self.height, self.width, self.nbchannels = im.shape
         self.size = self.width * self.height
         
